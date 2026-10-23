@@ -1,11 +1,18 @@
+name: Create main.yml
 
-      - name: Upload validated ML artifacts
-        uses: actions/upload-artifact@v7
-        with:
-          name: student-result-ml-artifacts
-          path: |
-            student_result_model.pkl
-            metrics.json
-            student_results.csv
-          if-no-files-found: error
-          retention-days: 7
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Display success message
+        run: echo "GitHub Actions is working successfully!"
